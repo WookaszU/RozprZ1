@@ -28,7 +28,7 @@ public class Server {
 
         try {
             serverSocket = new ServerSocket(portNumber);
-            datagramSocket = new DatagramSocket(12345);
+            datagramSocket = new DatagramSocket(serverSocket.getLocalPort());
         } catch (IOException e) {
             e.printStackTrace();
         }

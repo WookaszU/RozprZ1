@@ -1,4 +1,4 @@
-package client.clientReaders;
+package client.clientListeners;
 
 import java.io.*;
 import java.net.DatagramPacket;
@@ -6,7 +6,7 @@ import java.net.DatagramSocket;
 import java.net.SocketException;
 import java.util.Arrays;
 
-public class ClientUdpReader extends UdpReader implements Runnable {
+public class ClientUdpListener extends UdpListener implements Runnable {
 
     private DatagramSocket datagramSocket;
     private Boolean close = false;
@@ -14,7 +14,7 @@ public class ClientUdpReader extends UdpReader implements Runnable {
 
     private String pathToSave = ".\\Photos\\UDP\\";
 
-    public ClientUdpReader(DatagramSocket datagramSocket){
+    public ClientUdpListener(DatagramSocket datagramSocket){
         this.datagramSocket = datagramSocket;
     }
 

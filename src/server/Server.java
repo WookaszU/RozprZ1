@@ -1,8 +1,8 @@
 package server;
 
-import server.clientConnectors.ClientData;
-import server.clientConnectors.ClientTcpConnect;
-import server.clientConnectors.ClientUdpConnect;
+import server.serverListeners.ClientData;
+import server.serverListeners.ServerTcpListener;
+import server.serverListeners.ServerUdpListener;
 
 import java.io.*;
 import java.net.DatagramSocket;
@@ -19,10 +19,10 @@ public class Server {
 
     private static ExecutorService pool = Executors.newFixedThreadPool(100);
     private static ConcurrentLinkedQueue<ClientData> clients = new ConcurrentLinkedQueue<>();
-    private static int maxClientNumber = 1;
+    private static int maxClientNumber = 10;
 
     public static void main(String args[]){
-        System.out.println("JAVA TCP SERVER");
+        System.out.println("JAVA SERVER");
         int portNumber = 12345;
 
 
@@ -41,8 +41,8 @@ public class Server {
                     Socket clientSocket = serverSocket.accept();
                     if(ConcurrentCounter.counter < maxClientNumber) {
 
-                        pool.submit(new ClientTcpConnect(clients, clientSocket));
-                        pool.submit(new ClientUdpConnect(clients, datagramSocket));
+                        pool.submit(new ServerTcpListener(clients, clientSocket));
+                        pool.submit(new ServerUdpListener(clients, datagramSocket));
 
                         ConcurrentCounter.incrementCounter();
                     }

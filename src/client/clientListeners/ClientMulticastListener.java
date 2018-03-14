@@ -1,4 +1,4 @@
-package client.clientReaders;
+package client.clientListeners;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,7 +7,7 @@ import java.net.SocketException;
 import java.util.Arrays;
 
 
-public class ClientMulticastReader extends UdpReader implements Runnable {
+public class ClientMulticastListener extends UdpListener implements Runnable {
 
     private MulticastSocket multicastSocket;
     private String userName;
@@ -17,7 +17,7 @@ public class ClientMulticastReader extends UdpReader implements Runnable {
     private String pathToSave = ".\\Photos\\Multicast\\";
 
 
-    public ClientMulticastReader(MulticastSocket multicastSocket) {
+    public ClientMulticastListener(MulticastSocket multicastSocket) {
         this.multicastSocket = multicastSocket;
     }
 

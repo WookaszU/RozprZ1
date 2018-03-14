@@ -1,4 +1,4 @@
-package client.clientReaders;
+package client.clientListeners;
 
 
 import javax.imageio.ImageIO;
@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Random;
 
-public abstract class UdpReader {
+public abstract class UdpListener {
 
 
     // method to .jpg , image size <1500B  mtu ,  > need fragmentation

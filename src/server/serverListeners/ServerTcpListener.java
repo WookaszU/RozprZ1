@@ -1,4 +1,4 @@
-package server.clientConnectors;
+package server.serverListeners;
 
 import server.ConcurrentCounter;
 
@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-public class ClientTcpConnect implements Runnable {
+public class ServerTcpListener implements Runnable {
 
     private ConcurrentLinkedQueue<ClientData> clients;
     private Socket clientSocket;
@@ -20,7 +20,7 @@ public class ClientTcpConnect implements Runnable {
     private ClientData currentClient;
 
 
-    public ClientTcpConnect(ConcurrentLinkedQueue<ClientData> clients, Socket clientSocket){
+    public ServerTcpListener(ConcurrentLinkedQueue<ClientData> clients, Socket clientSocket){
         this.clients = clients;
         this.clientSocket = clientSocket;
 
@@ -64,7 +64,6 @@ public class ClientTcpConnect implements Runnable {
                     String line = is.readLine();
 
                     if(line.equals("/q")) {
-                        System.out.println("trtrtrtrtr");
                         this.os.println("/unregistered");
                         ConcurrentCounter.decrementCounter();
                         break;

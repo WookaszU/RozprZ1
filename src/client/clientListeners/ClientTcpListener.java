@@ -1,6 +1,4 @@
-package client.clientReaders;
-
-import client.Client;
+package client.clientListeners;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,9 +8,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.concurrent.locks.Lock;
 
-import static client.Client.lock;
-
-public class ClientTcpReader implements Runnable {
+public class ClientTcpListener implements Runnable {
 
     private BufferedReader is = null;
     private Boolean close = false;
@@ -23,7 +19,7 @@ public class ClientTcpReader implements Runnable {
     //private final Lock lock;
 
 
-    public ClientTcpReader(BufferedReader is, DatagramSocket datagramSocket, InetAddress address, int port, Lock lock){
+    public ClientTcpListener(BufferedReader is, DatagramSocket datagramSocket, InetAddress address, int port, Lock lock){
         this.is = is;
         this.datagramSocket = datagramSocket;
         this.address = address;

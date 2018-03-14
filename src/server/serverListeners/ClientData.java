@@ -1,4 +1,4 @@
-package server.clientConnectors;
+package server.serverListeners;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;

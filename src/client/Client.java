@@ -1,8 +1,8 @@
 package client;
 
-import client.clientReaders.ClientMulticastReader;
-import client.clientReaders.ClientTcpReader;
-import client.clientReaders.ClientUdpReader;
+import client.clientListeners.ClientMulticastListener;
+import client.clientListeners.ClientTcpListener;
+import client.clientListeners.ClientUdpListener;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -44,7 +44,7 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("JAVA TCP CLIENT");
+        System.out.println("JAVA CLIENT");
         String hostName = "localhost";
         int portNumber = 12345;
 
@@ -72,9 +72,9 @@ public class Client {
 
             datagramSocket = new DatagramSocket(clientSocket.getLocalPort());
 
-            ClientTcpReader readerTcp = new ClientTcpReader(is, datagramSocket, address, portNumber, lock);
-            ClientUdpReader readerUdp = new ClientUdpReader(datagramSocket);
-            ClientMulticastReader readerMulticast = new ClientMulticastReader(multicastSocket);
+            ClientTcpListener readerTcp = new ClientTcpListener(is, datagramSocket, address, portNumber, lock);
+            ClientUdpListener readerUdp = new ClientUdpListener(datagramSocket);
+            ClientMulticastListener readerMulticast = new ClientMulticastListener(multicastSocket);
 
             pool.submit(readerTcp);
             pool.submit(readerUdp);

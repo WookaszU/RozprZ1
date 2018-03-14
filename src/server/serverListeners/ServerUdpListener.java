@@ -1,4 +1,4 @@
-package server.clientConnectors;
+package server.serverListeners;
 
 import java.lang.reflect.Array;
 import java.net.DatagramPacket;
@@ -7,14 +7,14 @@ import java.net.InetAddress;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 
-public class ClientUdpConnect implements Runnable {
+public class ServerUdpListener implements Runnable {
 
     private ConcurrentLinkedQueue<ClientData> clients;
 
     private DatagramSocket socket;
 
 
-    public ClientUdpConnect(ConcurrentLinkedQueue<ClientData> clients, DatagramSocket datagramSocket){
+    public ServerUdpListener(ConcurrentLinkedQueue<ClientData> clients, DatagramSocket datagramSocket){
         this.socket = datagramSocket;
         this.clients = clients;
     }
